@@ -1,0 +1,723 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  color: white;
+  padding: 10px 20px;
+  height: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* LEFT HEADER SECTION */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.header-title {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.hbutton {
+  padding: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-right: 20px;
+  color: white;
+}
+
+/* MAIN LAYOUT */
+.portal-layout {
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 50px); /* full viewport minus header */
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background-color: #006747;
+  color: white;
+  padding: 10px;
+  position: sticky;
+  top: 50px; /* below header */
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  width: 400px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 50px;
+  padding: 10px 5px;
+}
+
+.toggle-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  color: white;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.main-content {
+  background-color: #f4f4f4;
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  /* Dynamic width based on sidebar */
+  width: calc(100% - 200px - 250px); /* 250px for ChatBar */
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed + .main-content {
+  width: calc(100% - 50px - 250px);
+}
+
+/* CHAT BAR */
+.profile-bar {
+  width: 20%;
+  background-color: #def7f1;
+  padding: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  position: sticky;
+  top: 50px; /* Sticks below the sticky header */
+  height: 100%; /* Full height of the container */
+  overflow-y: auto; /* Adds scrollbar only if content overflows */
+  z-index: 0;
+}
+
+.logo-img {
+  width: 120px;
+  height: auto;
+  margin: 0 auto 10px; 
+  display: block; 
+}
+
+.logo-text {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.menu-list {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.menu-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.menu-list li:hover {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 215, 0, 0.25) 0%,
+    rgba(255, 215, 0, 0.1) 60%,
+    transparent 100%
+  );
+  border-radius: 5px;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+/* CAROUSEL */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+}
+
+.Txtonimg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  z-index: 2;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.Txtonimg h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.Txtonimg p {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.section-title {
+  font-size: 18px;
+  color: #006747;
+  border-bottom: 3px solid #006747;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+/* POST */
+.post-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.dot {
+  margin: 0 5px;
+}
+
+.post-caption {
+  margin: 10px 0;
+}
+
+.likes {
+  font-size: 14px;
+  color: #333;
+}
+
+.comment-box {
+  margin-top: 10px;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* PROFILE */
+/* Profile Header */
+.profile-header {
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: #00c173;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+/* Student Profile */
+.student-profile {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Avatar */
+.avatar-glow {
+  width: 50px;
+  height: 50px;
+  background-color: #222;
+  border-radius: 50%;
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+
+/* Student Info */
+.student-info .student-id {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.student-info .online-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #00d26a;
+  border-radius: 50%;
+  margin-left: 6px;
+}
+
+.student-info .student-name {
+  font-size: 12px;
+}
+
+.student-info .student-status {
+  font-size: 10px;
+  color: gray;
+}
+
+.status-label {
+  font-style: italic;
+}
+
+
+.edit-button {
+  margin: 10px 0;
+  width: 100%;
+  padding: 8px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #ffd700; /* Yellow/Gold on hover */
+}
+
+.edit-button:active {
+  background-color: #daa520; /* Slightly darker gold when clicked */
+}
+
+
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  
+}
+
+.contact {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the center */
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 15px;
+  transition: box-shadow 0.3s ease, transform 0.2s;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact:hover {
+  box-shadow: 0 0 12px rgba(0, 204, 122, 0.6);
+  transform: translateY(-2px);
+}
+
+.contact.highlighted {
+  background-color: #fff9c4;
+  position: relative;
+}
+
+.contact.highlighted::before {
+  content: "👑";
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 20px;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+  flex-grow: 1; 
+}
+
+
+.contact-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #222;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.contact-info .contact-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.contact-info .contact-role {
+  font-size: 10px;
+  color: #444;
+}
+
+.contact-info .chat-now {
+  font-size: 10px;
+  color: #00c173;
+  font-weight: bold;
+  display: block; /* Makes it a block element to allow centering */
+  text-align: center; /* Centers the text horizontally */
+  margin-top: 4px; /* Adds a small top margin for better vertical alignment */
+}
+
+.contact-info .online-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #00d26a;
+  border-radius: 50%;
+  margin-left: 6px;
+}
+
+/* Add Post Button */
+.add-post-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #4db126;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+.add-post-btn:hover {
+  background-color: #1d7212;
+}
+
+/* Modal overlay */
+.Overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Main modal container */
+.Modal {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  padding: 20px 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  outline: none;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Authentication modal tweaks */
+.AuthModal {
+  max-width: 400px;
+  text-align: center;
+}
+
+/* User info in add post modal */
+.post-user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.post-user-info .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+  border: 1.5px solid #ccc;
+}
+
+.post-user-info .username {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Textarea for post */
+.post-textarea {
+  width: 100%;
+  resize: vertical;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-family: inherit;
+}
+
+.image-upload-label {
+  display: inline-block;
+  padding: 8px 14px;
+  background-color: #17b111; 
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 15px;
+  transition: background-color 0.2s ease;
+}
+
+.image-upload-label:hover {
+  background-color: #216810;
+}
+
+/* Preview selected image */
+.image-preview {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  object-fit: contain;
+  border: 1px solid #ddd;
+}
+
+/* Buttons container */
+.modal-btn-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.btn-submit {
+  background-color: #43b110;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #108f25;
+}
+
+.btn-cancel {
+  background-color: #eee;
+  color: #333;
+}
+
+.btn-cancel:hover {
+  background-color: #ddd;
+}
+
+/* Auth modal input */
+.auth-input {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 15px 0 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.comment {
+  margin: 4px 0;
+}
+
+.comment-user {
+  font-weight: bold;
+  color: #2a5885; /* or your theme color */
+}
+
+.comment-text {
+  margin-left: 6px;
+  color: #333;
+}
+
+.likes {
+  margin-top: 10px;
+}
+
+.like-btn {
+  background-color: #f0f0f0;
+  border: 1.5px solid #2aac31;
+  color: #2a852a;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.like-btn:hover:not(:disabled) {
+  background-color: #2a8539;
+  color: white;
+}
+
+.like-btn.liked {
+  background-color: #2a8541;
+  color: white;
+  cursor: default;
+  border-color: #1f6725;
+}
+
+.like-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Modal for app.jsx */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal button {
+  margin-top: 15px;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+/* Chatbar Modal */
+
+.chatbar-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.chatbar-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.chatbar-modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.chatbar-modal-content label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.chatbar-modal-content input {
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+.chatbar-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.chatbar-modal-buttons button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
