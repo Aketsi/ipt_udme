@@ -1,0 +1,727 @@
+@import url('https://fonts.googleapis.com/css2?family=Literata:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Livvic:wght@400;700&display=swap');
+
+/* GLOBAL */
+
+body {
+  background-color: #f3f5f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #1c1e21;
+  font-size: 14px; /* smaller base font size */
+}
+
+/* MAIN CONTENT */
+.main-content {
+  background-color: #ffffff;
+  padding: 16px;
+  height: 90vh;
+  width: calc(100% - 10px); /* adjust based on sidebar width */
+  margin: 0 auto; /* center horizontally */
+  overflow-y: auto;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Adjust for sidebar if needed */
+.sidebar.collapsed + .main-content {
+  width: 90vw;
+}
+
+/* CAROUSEL */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 250px; /* you can adjust this */
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+}
+
+.Txtonimg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 70%; /* adjust width as needed */
+  background: linear-gradient(
+    to left,
+    rgba(41, 138, 72, 0.85), /* solid green on right */
+    rgba(41, 138, 72, 0.4) 60%,
+    rgba(41, 138, 72, 0) /* fully transparent on left */
+  );
+  color: white;
+  z-index: 2;
+  padding: 1px 20px;
+  box-sizing: border-box;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Txtonimg h2 {
+  font-family: 'Livvic', sans-serif;
+  margin: 0;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.Txtonimg p {
+    font-family: 'Livvic', sans-serif;
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Animation keyframes */
+
+/* Zoom in carousel image on load */
+@keyframes zoomInImage {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Slide in text from the right with fade */
+@keyframes slideInRightFade {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-zoomIn {
+  animation: zoomInImage 3s ease forwards;
+  transform-origin: center;
+}
+
+.animate-slideInRightFade {
+  animation: slideInRightFade 1s ease forwards;
+  animation-delay: 0.3s;
+}
+/* Apply animations */
+
+.carousel-img {
+  animation: zoomInImage 3s ease forwards;
+  transform-origin: center;
+}
+
+.Txtonimg {
+  animation: slideInRightFade 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* SECTION TITLE */
+.section-title {
+  font-size: 20px;
+  color: #006747;
+  border-bottom: 3px solid #006747;
+  display: inline-block;
+  margin-bottom: 16px;
+  padding-bottom: 4px;
+}
+
+.ann-section{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  gap: 20px;
+}
+
+
+.ann-section h2 {
+  font-family: 'Literata', serif;
+  font-size: calc(25px - 2px); /* slightly smaller for a cleaner aesthetic */
+  font-weight: bold; /* optional: makes it stand out subtly */
+  color: #000000;
+  margin: 0 0 10px 0;
+}
+
+
+.rib-left{
+  width: calc(100% - 20vw);
+  height: 30px;
+}
+
+.rib-right{
+  width: calc(100% - 20vw);
+  height: 30px;
+}
+
+/* Keyframes */
+
+/* Slide up and fade */
+@keyframes slideUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale up and fade */
+@keyframes scaleUpFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Shimmer effect (simple horizontal gradient moving) */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Applying animations */
+
+.section-title {
+  animation: slideUpFadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+
+.ann-section h2 {
+  animation: scaleUpFadeIn 0.8s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+
+/* POST CARD */
+.post-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 100, 71, 0.1);
+  margin: 0 auto 20px;
+  max-width: 700px; /* narrower width */
+  width: 100%;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Slightly reduce padding to make card less tall */
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 14px;
+  background-color: #ffffff;
+}
+
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.post-header strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #006747;
+}
+
+.post-header span {
+  font-size: 11px;
+  color: #90949c;
+}
+
+.post-img {
+  width: 16px;
+  height: 16px;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #90949c;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  color: #d32f2f;
+}
+
+/* POST CONTENT */
+.post-caption {
+  padding: 8px 14px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.post-image-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 300px; 
+  object-fit: cover;
+}
+
+/* LIKES */
+.likes {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  font-size: 13px;
+  color: #9cec94;
+}
+
+.like-btn {
+  background-color: transparent;
+  border: none;
+  color: #12751a;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.like-btn:hover:not(:disabled) {
+  background-color: #e6f4ec;
+  color: #004d1a;
+}
+
+.like-btn.liked {
+  color: #004d36;
+  font-weight: bold;
+}
+
+.like-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* COMMENTS */
+.comments-section {
+  padding: 8px 14px;
+}
+
+.no-comments {
+  color: #90949c;
+  font-size: 13px;
+  text-align: center;
+}
+
+.comments-list {
+  margin-bottom: 8px;
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin: 6px 0;
+}
+
+.comment-user {
+  font-weight: 600;
+  color: #006747;
+  font-size: 13px;
+  margin-right: 6px;
+}
+
+.comment-text {
+  background-color: #f0f2f5;
+  padding: 6px 10px;
+  border-radius: 15px;
+  font-size: 13px;
+  color: #1c1e21;
+}
+
+/* COMMENT INPUT */
+.comment-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f0f2f5;
+  padding: 0 14px;
+  border-radius: 25px;
+  margin-top: 8px;
+}
+
+.comment-input {
+  flex-grow: 1;
+  padding: 5px 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  background-color: transparent;
+  outline: none;
+}
+
+.btn-comment-submit {
+  background-color: transparent;
+  border: none;
+  color: #006747;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.btn-comment-submit:hover {
+  color: #004d36;
+}
+
+.btn-comment-submit:disabled {
+  color: #b0b3b8;
+  cursor: default;
+}
+
+/* ADD POST BUTTON */
+.add-post-btn {
+  margin-left: auto;
+  position: absolute;
+  bottom: 20px;
+  right: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #ffffff;
+  color: #006747;
+  font-weight: 600;
+  font-size: 13px;
+  border: 1px solid #cdd0d4;
+  border-radius: 30px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s, box-shadow 0.2s;
+  z-index: 1000 !important; 
+}
+
+.add-post-btn:hover {
+  background-color: #f0f2f5;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-post-btn-icon {
+  width: 18px;
+  height: 18px;
+  fill: #006747;
+}
+
+/* Keyframes */
+
+/* Fade in and slide up */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Like button pop */
+@keyframes likePop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Comment input focus glow */
+@keyframes focusGlow {
+  from {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  to {
+    box-shadow: 0 0 8px 2px rgba(0, 103, 71, 0.6);
+  }
+}
+
+/* Applying animations */
+
+/* Post card fade in */
+.post-card {
+  animation: fadeSlideUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* Add post button hover scale & shadow */
+.add-post-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 103, 71, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Like button pop animation on liked state toggle */
+.like-btn.liked {
+  animation: likePop 0.3s ease forwards;
+}
+
+/* Comment input focus glow */
+.comment-input:focus {
+  animation: focusGlow 0.3s forwards;
+}
+
+/* Overlay covers entire viewport with a translucent black background */
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Modal box */
+.Modal {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 450px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px 28px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #1c1e21;
+  position: relative;
+  font-size: 14px;
+}
+
+/* Modal headings */
+.Modal h2 {
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+  color: #050505;
+}
+
+/* Buttons style */
+.Modal .btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+  user-select: none;
+  outline-offset: 2px;
+}
+
+/* Primary submit button */
+.Modal .btn-submit {
+  background-color: #17b13d;
+  color: white;
+  margin-right: 10px;
+}
+
+.Modal .btn-submit:disabled {
+  background-color: #7ebb8d;
+  cursor: not-allowed;
+}
+
+/* Cancel button */
+.Modal .btn-cancel {
+  background-color: #e4e6eb;
+  color: #050505;
+}
+
+.Modal .btn-submit:not(:disabled):hover {
+  background-color: #1f7c36;
+}
+
+.Modal .btn-cancel:hover {
+  background-color: #d8dadf;
+}
+
+/* Input fields styling */
+.Modal input.auth-input,
+.Modal textarea.post-textarea {
+  width: 100%;
+  font-size: 0.95rem;
+  padding: 10px 12px;
+  border: 1.5px solid #dddfe2;
+  border-radius: 8px;
+  resize: none;
+  font-family: inherit;
+  margin-bottom: 18px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.Modal input.auth-input:focus,
+.Modal textarea.post-textarea:focus {
+  border-color: #1f7c36;
+  outline: none;
+  box-shadow: 0 0 3px #1f7c36;
+}
+
+/* Image preview */
+.image-preview {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  object-fit: contain;
+  max-height: 230px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Image upload label */
+.image-upload-label {
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1.5px solid #1f7c36;
+  border-radius: 8px;
+  color: #1f7c36;
+  font-weight: 600;
+  user-select: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-bottom: 18px;
+}
+
+.image-upload-label:hover {
+  background-color: #1f7c36;
+  color: white;
+}
+
+/* Modal buttons container */
+.modal-btn-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Avatar and username */
+.post-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Scrollbar for modal */
+.Modal::-webkit-scrollbar {
+  width: 7px;
+}
+
+.Modal::-webkit-scrollbar-thumb {
+  background-color: rgba(24, 119, 242, 0.3);
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .Modal {
+    padding: 16px 20px;
+    max-width: 90vw;
+  }
+}
+
+/* Scrollbar for main-content */
+.main-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; /* for horizontal scrollbar */
+  border-radius: 0;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: #e6f4ec; /* very light greenish background */
+  border-radius: 0;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background-color: #12751a; /* your green accent */
+  border-radius: 0;
+  border: 2px solid #e6f4ec; /* padding around thumb */
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background-color: #004d1a; /* darker green on hover */
+}
+
+/* Firefox scrollbar for main-content */
+.main-content {
+  scrollbar-width: thick;
+  scrollbar-color: #12751a #e6f4ec;
+}
+
+
+/* Scrollbar for modal */
+.Modal::-webkit-scrollbar {
+  width: 7px;
+}
+
+.Modal::-webkit-scrollbar-track {
+  background: #dbe8fc; 
+}
+
+.Modal::-webkit-scrollbar-thumb {
+  background-color: rgba(47, 180, 6, 0.6);
+  border-radius: 8px;
+  border: 2px solid #dbe8fc;
+}
+
+.Modal::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(50, 139, 9, 0.9);
+}
+
+/* Firefox scrollbar for modal */
+.Modal {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(10, 121, 25, 0.6) #dbe8fc;
+}
+

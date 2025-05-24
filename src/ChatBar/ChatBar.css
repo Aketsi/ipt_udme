@@ -1,0 +1,326 @@
+/* CHAT BAR */
+.profile-bar {
+  width: 100%;
+  background-color: #def7f1;
+  padding: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  position: sticky;
+  top: 50px; /* Sticks below the sticky header */
+  height: 100%; /* Full height of the container */
+  overflow-y: auto; /* Adds scrollbar only if content overflows */
+  z-index: 0;
+  /* Optional: smooth fade-in on mount */
+  animation: fadeInSidebar 0.5s ease forwards;
+}
+
+/* Sidebar fade-in */
+@keyframes fadeInSidebar {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* PROFILE */
+/* Profile Header */
+.profile-header {
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: #00c173;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+/* Student Profile */
+.student-profile {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Avatar */
+.avatar-glow {
+  width: 50px;
+  height: 50px;
+  background-color: #222;
+  border-radius: 50%;
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+
+
+/* Student Info */
+.student-info .student-id {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.student-info .online-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #00d26a;
+  border-radius: 50%;
+  margin-left: 6px;
+}
+
+.student-info .student-name {
+  font-size: 12px;
+}
+
+.student-info .student-status {
+  font-size: 10px;
+  color: gray;
+}
+
+.status-label {
+  font-style: italic;
+}
+
+/* Buttons */
+.edit-button {
+  margin: 10px 0;
+  width: 100%;
+  padding: 8px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button:hover {
+  background-color: #ffd700; /* Yellow/Gold on hover */
+  transform: scale(1.05);
+}
+
+.edit-button:active {
+  background-color: #daa520; /* Slightly darker gold when clicked */
+  transform: scale(0.95);
+}
+
+/* Contacts List */
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+/* Contacts appear with slide & fade animation */
+.contact {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 15px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+
+  /* Start hidden and shifted left */
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideFadeIn 0.4s forwards;
+}
+
+/* Stagger animation delays for contacts */
+.contacts > .contact:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.contacts > .contact:nth-child(2) {
+  animation-delay: 0.25s;
+}
+.contacts > .contact:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* On hover: elevate */
+.contact:hover {
+  box-shadow: 0 0 12px rgba(0, 204, 122, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Highlighted contact background */
+.contact.highlighted {
+  background-color: #fff9c4;
+}
+
+/* Crown icon on highlighted contact */
+.contact.highlighted::before {
+  content: "👑";
+  position: absolute;
+  top: 20%;
+  left: 5px; /* Move crown to the left side of the avatar */
+  transform: translateY(-50%) rotate(-20deg); /* Center vertically and rotate */
+  font-size: 18px;
+  z-index: 1;
+}
+
+/* Contact Info */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the left */
+  justify-content: center;
+  flex-grow: 1;
+  margin-left: 10px; /* Shift text slightly toward the center */
+  text-align: left; /* Ensure text is left-aligned */
+}
+
+.contact-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #222;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+  z-index: 0; /* Ensure avatar is behind the crown */
+}
+
+.contact-header {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between name and status */
+  margin-bottom: 2px; /* Space between header and role */
+}
+
+.contact-info .contact-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.contact-info .contact-role {
+  font-size: 10px;
+  color: #444;
+  text-align: left; /* Ensure role is aligned left */
+}
+
+.contact-info .chat-now {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.contact-info .chat-now.active {
+  color: #00c173; /* Green for active status */
+}
+
+.contact-info .chat-now.offline {
+  color: #888; /* Gray for offline status */
+}
+
+.contact-info .online-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #00d26a;
+  border-radius: 50%;
+  margin-left: 6px;
+}
+
+/* Contact slide & fade in keyframe */
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Chatbar Modal */
+
+.chatbar-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeInOverlay 0.3s ease forwards;
+}
+
+/* Overlay fade-in */
+@keyframes fadeInOverlay {
+  to {
+    background: rgba(0,0,0,0.5);
+  }
+}
+
+.chatbar-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: scale(0.9);
+  animation: fadeInScaleUp 0.3s ease forwards;
+}
+
+/* Modal content fade & scale in */
+@keyframes fadeInScaleUp {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.chatbar-modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.chatbar-modal-content label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.chatbar-modal-content input {
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+/* Modal buttons */
+.chatbar-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.chatbar-modal-buttons button {
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+.chatbar-modal-buttons button:hover {
+  background-color: #00c173;
+  color: white;
+  transform: scale(1.05);
+}
+
+.chatbar-modal-buttons button:active {
+  transform: scale(0.95);
+}

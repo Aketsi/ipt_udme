@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Keania+One&display=swap');
+
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  color: white;
+  padding: 10px 20px;
+  height: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* LEFT HEADER SECTION */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.header-title {
+  font-family: 'Keania One', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.hbutton {
+  padding: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-right: 20px;
+  color: white;
+}
+
+.portal-main {
+  background: linear-gradient(90deg, #3EBE21 0%, #2D8B18 56.24%, #1D580F 112.48%);
+}
+
+/* PORTAL LAYOUT */
+.portal-container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 50px); /* Adjust for header height */
+  overflow: hidden;
+}
+
+/* SIDEBAR CONTAINER */
+.sidebar-container {
+  width: 19%;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+/* Sidebar states */
+.sidebar-expanded {
+  width: 250px;
+}
+
+.sidebar-collapsed {
+  width: 60px;
+}
+
+/* MAIN CONTENT */
+.maincontent-container {
+  flex: 1;
+  min-height: 100vh;
+  padding: 10px;
+  transition: all 0.3s ease;
+  
+}
+
+/* CHATBAR */
+.chatbar-container {
+  width: 20%;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-left: 1px solid #ccc;
+  transition: width 0.3s ease;
+}
+
+/* Modal Overlay: dims the background */
+.modal-overlay {
+  position: fixed; /* stay fixed on screen */
+  top: 0;
+  left: 0;
+  width: 100vw;  /* full viewport width */
+  height: 100vh; /* full viewport height */
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* very high to be on top */
+}
+
+/* Modal box styling */
+.modal {
+  background-color: #fff; /* white background */
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  z-index: 10000;
+}
+
+/* Modal heading */
+.modal h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* Modal paragraph */
+.modal p {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Modal close button */
+.modal button {
+  background-color: #006747;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.modal button:hover {
+  background-color: #004b32;
+}
+
