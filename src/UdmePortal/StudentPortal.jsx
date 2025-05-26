@@ -3,8 +3,7 @@ import SideBar from '../SideBar/SideBar';
 import MainContent from '../MainContent/MainContent';
 import ChatBar from '../ChatBar/ChatBar';
 import Chat from '../Chat/Chat';
-// import Announcements from '../components/Announcements/Announcements';
-// import Modules from '../components/Modules/Modules';
+import Modules from '../Modules/Modules';
 // import Grades from '../components/Grades/Grades';
 import './StudentPortal.css';
 
@@ -21,8 +20,7 @@ const StudentPortal = () => {
   const menuComponentMap = {
     Home: <MainContent />,
     Messages: <Chat />,
-    // Announcements: <Announcements />,
-    // Modules: <Modules />,
+    Modules: <Modules />,
     // Grades: <Grades />,
   };
 
