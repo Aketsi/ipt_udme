@@ -1,17 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ChatBar.css";
 
-function ChatBar() {
-  const [profile, setProfile] = useState({
-    id: "23–22–003",
-    name: "Jaynie Claire Q. Correa",
-    status: "College Student",
-    pic: null, // start with no profile pic or default pic url
-  });
-
+function ChatBar({ onSelectChat, selectedChat, currentUser }) {
+  const [profile, setProfile] = useState({ id: "", name: "", status: "College Student", pic: null });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tempProfile, setTempProfile] = useState(profile);
-  const [tempPicPreview, setTempPicPreview] = useState(profile.pic); // for previewing uploaded pic
+  const [tempPicPreview, setTempPicPreview] = useState(null);
+
+  const defaultProfiles = {
+    "akecchi99@yahoo.com": { id: "23-22-022", name: "John Albert Padua", status: "College Student", pic: null },
+    "marlonpinpin@gmail.com": { id: "23-22-014", name: "Marlon Pinpin", status: "College Student", pic: null },
+    "jobjab480@gmail.com": { id: "23-22-XXX", name: "User Undefined", status: "College Student", pic: null },
+  };
+
+  useEffect(() => {
+    if (currentUser) {
+      const savedProfile = localStorage.getItem(`profile_${currentUser.email}`);
+      if (savedProfile) {
+        const parsed = JSON.parse(savedProfile);
+        setProfile(parsed);
+        setTempPicPreview(parsed.pic);
+      } else if (defaultProfiles[currentUser.email]) {
+        setProfile(defaultProfiles[currentUser.email]);
+      } else {
+        setProfile({ id: "23-22-XXX", name: currentUser.email, status: "College Student", pic: null });
+      }
+    }
+  }, [currentUser]);
 
   const openModal = () => {
     setTempProfile(profile);
@@ -24,41 +39,39 @@ function ChatBar() {
     setTempProfile((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle file input change to preview image
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => {
-        setTempPicPreview(reader.result); // base64 image string
-      };
+      reader.onloadend = () => setTempPicPreview(reader.result);
       reader.readAsDataURL(file);
     }
   };
 
-  // Save all changes including profile pic
   const handleSave = () => {
-    setProfile({ ...tempProfile, pic: tempPicPreview });
+    const updatedProfile = { ...tempProfile, pic: tempPicPreview };
+    setProfile(updatedProfile);
+    localStorage.setItem(`profile_${currentUser.email}`, JSON.stringify(updatedProfile));
     setIsModalOpen(false);
   };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const handleCancel = () => setIsModalOpen(false);
+
+  const contacts = [
+    { name: "XXXXX", role: "GENED PROF ENGLISH" },
+    { name: "YYYYY", role: "MATH COORDINATOR" },
+    { name: "ZZZZZ", role: "SCIENCE PROFESSOR" },
+  ];
 
   return (
     <>
       <aside className="profile-bar">
         <div className="profile-header">MY PROFILE</div>
-
         <div className="student-profile">
-          {/* Show selected pic or fallback */}
           <div
             className="avatar-glow"
             style={{
-              backgroundImage: tempPicPreview
-                ? `url(${tempPicPreview})`
-                : `url('/default-avatar.png')`,
+              backgroundImage: profile.pic ? `url(${profile.pic})` : `url('/default-avatar.png')`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               width: "80px",
@@ -78,20 +91,19 @@ function ChatBar() {
           </div>
         </div>
 
-        <button className="edit-button" onClick={openModal}>
-          Edit Profile
-        </button>
+        <button className="edit-button" onClick={openModal}>Edit Profile</button>
 
-        {/* Dummy contacts list */}
         <div className="contacts">
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className={`contact ${i === 0 ? "highlighted" : ""}`}>
+          {contacts.map((contact, i) => (
+            <div
+              key={i}
+              className={`contact ${selectedChat === `Contact${i + 1}` ? "highlighted" : ""}`}
+              onClick={() => onSelectChat(`Contact${i + 1}`)}
+            >
               <div className="contact-avatar" />
               <div className="contact-info">
-                <div className="contact-name">
-                  Abdul Jabul <span className="online-dot" />
-                </div>
-                <div className="contact-role">GENED PROF ENGLISH</div>
+                <div className="contact-name">{contact.name} <span className="online-dot" /></div>
+                <div className="contact-role">{contact.role}</div>
                 <div className="chat-now">Active now</div>
               </div>
             </div>
@@ -103,44 +115,22 @@ function ChatBar() {
         <div className="chatbar-modal-overlay">
           <div className="chatbar-modal-content">
             <h2>Edit Profile</h2>
-
             <label>
               Student ID:
-              <input
-                type="text"
-                name="id"
-                value={tempProfile.id}
-                onChange={handleChange}
-                disabled
-              />
+              <input type="text" name="id" value={tempProfile.id} onChange={handleChange} />
             </label>
-
             <label>
               Name:
-              <input
-                type="text"
-                name="name"
-                value={tempProfile.name}
-                onChange={handleChange}
-              />
+              <input type="text" name="name" value={tempProfile.name} onChange={handleChange} />
             </label>
-
             <label>
               Status:
-              <input
-                type="text"
-                name="status"
-                value={tempProfile.status}
-                onChange={handleChange}
-              />
+              <input type="text" name="status" value={tempProfile.status} onChange={handleChange} />
             </label>
-
             <label>
               Select Profile Picture:
               <input type="file" accept="image/*" onChange={handleFileChange} />
             </label>
-
-            {/* Preview selected pic */}
             {tempPicPreview && (
               <div
                 style={{
@@ -155,7 +145,6 @@ function ChatBar() {
                 }}
               />
             )}
-
             <div className="chatbar-modal-buttons">
               <button onClick={handleSave}>Save</button>
               <button onClick={handleCancel}>Cancel</button>
