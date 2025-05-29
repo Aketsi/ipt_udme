@@ -282,3 +282,195 @@
 .Chat.dark .sendButton:hover {
   background-color: #168a12;
 }
+
+/* Modal Overlay */
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Container */
+.Modal {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  padding: 24px 32px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+/* Modal Header */
+.Modal .modal-header {
+  position: relative;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.Modal .modal-header h2 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 22px;
+}
+.Modal .modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  font-weight: 700;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 8px;
+  transition: color 0.2s ease;
+}
+.Modal .modal-close:hover {
+  color: #4caf50;
+}
+
+/* Modal Avatar Section */
+.modal-avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.modal-avatar-section .modal-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4caf50;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.modal-avatar-section .modal-avatar:hover {
+  box-shadow: 0 0 10px #4caf50aa;
+}
+
+.change-avatar-btn {
+  background-color: #4caf50;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 24px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+.change-avatar-btn:hover {
+  background-color: #3c9e42;
+}
+
+/* Hidden file input */
+.modal-avatar-section input[type="file"] {
+  display: none;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  display: block;
+  margin: 0 auto 24px auto;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 20px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+.theme-toggle-btn:hover {
+  background-color: #3c9e42;
+}
+
+/* Participants list */
+.global-members {
+  max-height: 220px;
+  overflow-y: auto;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}
+.global-members h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+.global-members ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.global-members li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+  font-size: 14px;
+  color: #555;
+}
+.global-members .modal-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #ccc;
+}
+
+/* Responsive scrollbar for participants */
+.global-members::-webkit-scrollbar {
+  width: 6px;
+}
+.global-members::-webkit-scrollbar-thumb {
+  background: rgba(76, 175, 80, 0.4);
+  border-radius: 3px;
+}
+
+/* Dark theme overrides */
+.Chat.dark .Modal {
+  background-color: #2c2c2c;
+  color: #eee;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+.Chat.dark .Modal .modal-header h2 {
+  color: #ddd;
+}
+.Chat.dark .Modal .modal-close {
+  color: #bbb;
+}
+.Chat.dark .Modal .modal-close:hover {
+  color: #75d818;
+}
+.Chat.dark .change-avatar-btn,
+.Chat.dark .theme-toggle-btn {
+  background-color: #75d818;
+  color: #222;
+}
+.Chat.dark .change-avatar-btn:hover,
+.Chat.dark .theme-toggle-btn:hover {
+  background-color: #168a12;
+}
+.Chat.dark .global-members {
+  border-top-color: #444;
+}
+.Chat.dark .global-members li {
+  color: #bbb;
+}

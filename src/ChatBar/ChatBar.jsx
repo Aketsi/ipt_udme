@@ -57,10 +57,23 @@ function ChatBar({ onSelectChat, selectedChat, currentUser }) {
 
   const handleCancel = () => setIsModalOpen(false);
 
+  // Updated with avatars
   const contacts = [
-    { name: "XXXXX", role: "GENED PROF ENGLISH" },
-    { name: "YYYYY", role: "MATH COORDINATOR" },
-    { name: "ZZZZZ", role: "SCIENCE PROFESSOR" },
+    {
+      name: "Juan Totre",
+      role: "GENED PROF ENGLISH",
+      avatar: "./assets/avatar1.png", // Add your image path
+    },
+    {
+      name: "Alberto Roberto",
+      role: "MATH COORDINATOR",
+      avatar: "./assets/avatar2.png",
+    },
+    {
+      name: "Jopay Kamustakana",
+      role: "SCIENCE PROFESSOR",
+      avatar: "./assets/avatar3.png",
+    },
   ];
 
   return (
@@ -100,7 +113,18 @@ function ChatBar({ onSelectChat, selectedChat, currentUser }) {
               className={`contact ${selectedChat === `Contact${i + 1}` ? "highlighted" : ""}`}
               onClick={() => onSelectChat(`Contact${i + 1}`)}
             >
-              <div className="contact-avatar" />
+              <div
+                className="contact-avatar"
+                style={{
+                  backgroundImage: `url(${contact.avatar})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  marginRight: "10px",
+                }}
+              />
               <div className="contact-info">
                 <div className="contact-name">{contact.name} <span className="online-dot" /></div>
                 <div className="contact-role">{contact.role}</div>
